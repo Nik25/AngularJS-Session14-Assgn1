@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="SimpleApp">
+<head>
+    <title>AngularJS-Session14-Assgn1</title>
+	<meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+</head>
+<body>
+    <script>
+        var simpleApp = angular.module('SimpleApp', []);
+        simpleApp.controller('MyController', function ($scope) {
+            $scope.in = "";
+        });
+        simpleApp.directive("copy", function () {
+            return{
+            restrict: 'E',
+            template: '<h2>My Custom Directive Demo. </h2> <h3>Please insert the text in the input field.</h3>'
+        };
+        });
+        simpleApp.directive("my", function () {
+            //return a DDO (Directive Definition Object)
+            return {
+                //retrict basically determines how the directives are used
+                //Restrict : 'E' ===> As Elements 
+                //Restrict : 'A' ===> As Atribute to the element 
+                // template : string which species the html which the directive needs to display 
+                // template should be in one single line 
+                restrict: 'E',
+                template: '{{in}}'
+            };
+        });
+       
+    </script>
+
+    <div ng-controller="MyController">
+        <copy></copy>
+        <input type="text" ng-model="in" /></br>
+      
+     <my></my>
+        
+        
+    </div>
+</body>
+</html>
